@@ -48,3 +48,29 @@ form {
 .StripeElement.PaymentRequestButton {
   padding: 0;
 }
+
+
+@font-face {
+  font-family: 'fonticon';
+  src:
+          url('fonts/fonticon.ttf?fro8dd') format('truetype'),
+          url('fonts/fonticon.woff?fro8dd') format('woff'),
+          url('fonts/fonticon.svg?fro8dd#fonticon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.ic {
+  color: #0482bb;
+  text-decoration: none;
+  text-shadow: none;
+  font-size: 28px;
+  display: inline-block;
+  font-style: normal;
+  font-family: 'fonticon' ;
+}
+
+.ic-facebook:before {
+  content: "\e902";
+}
+

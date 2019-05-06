@@ -25,12 +25,8 @@ const Spacer = styled.span`
 const Footer = ({ product, theme }) => {
   return (
     <Wrapper>
-      <p>Thank you for browsing Eau Natural -- Ecommerce Site coming soon! Until then email us <a href="mailto:mairilee@shaw.ca">mairilee@shaw.ca</a>
-          <div className="fb-page"
-               data-href="https://www.facebook.com/Eau-Natural-648008055245905/"
-               data-width="380"
-               data-hide-cover="false"
-               data-show-facepile="false"><a href="https://www.facebook.com/Eau-Natural-648008055245905/">Visit us on Facebook</a></div>
+      <p style={{textAlign: 'center'}}>Thank you for browsing Eau Natural -- Ecommerce Site coming soon! Until then email us <a href="mailto:info@eaunatural.ca">info@eaunatural.ca</a> or <a className="fb" href="https://www.facebook.com/Eau-Natural-648008055245905/">visit us on Facebook <em
+          className="ic ic-facebook">&nbsp;</em> </a>
       </p>
     </Wrapper>
   );
