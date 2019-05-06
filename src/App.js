@@ -11,6 +11,7 @@ import Landing from './components/Landing';
 
 import ScrollToTop from './components/ui/ScrollToTop';
 import Banner from './components/ui/Banner';
+import Footer from './components/ui/Footer';
 import Products from './components/product/Products';
 import Product from './components/product/Product';
 import Cart from './components/cart/Cart';
@@ -85,9 +86,14 @@ class App extends Component {
                 <Route exact path="/admin" component={Admin} />
                 <Route exact path="/login" component={Login} />
               </div>
+
+              <Footer />
             </MuiThemeProvider>
+
           </ScrollToTop>
+
         </Router>
+
       </StripeProvider>
     );
   }
