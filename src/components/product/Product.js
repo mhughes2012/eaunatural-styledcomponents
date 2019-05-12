@@ -36,19 +36,22 @@ class Product extends Component {
   }
 
   componentDidMount() {
+
+
     if (!this.props.product.stripe_id) return;
 
     fetch('/product-info/'+this.props.product.stripe_id)
       .then(res => res.json())
       .then(product => {
+        console.warn('fullfilled');
         if (product.data.length > 1) {
           const attr = Object.keys(product.data[0].attributes)[0]
           const product_skus = {
             "name": attr,
             "options": product.data.map(sku => ({
               sku_id: sku.id,
-             // price: sku.price/100,
-              price: this.props.product.price,
+              price: sku.price/100,
+            //  price: this.props.product.price,
               label: sku.attributes[attr]
             }))
           }
@@ -65,6 +68,8 @@ class Product extends Component {
             sku_id: product.data[0].id,
             price: product.data[0].price/100
           });
+
+          console.warn (product.data[0].id);
         }
       }).catch(error => console.error('Error:', error));
   }
@@ -98,7 +103,7 @@ class Product extends Component {
       url: `/product/${product.url}`,
       sku_id: this.state.sku_id,
       name: product.name,
-      price: this.state.price,
+      price: product.price,
       attr,
       quantity: state.quantity
     };
@@ -118,6 +123,7 @@ class Product extends Component {
     }
 
     return (
+
       <PageWrapper>
         <Paper>
           <Wrapper>
@@ -129,7 +135,7 @@ class Product extends Component {
                   product={product}
                   quantity={this.state.quantity}
                   variants={this.state.variants}
-                  price={this.state.price}
+                  price={product.price}
                   setSKU={this.setSKU}
                   addToCart={this.addToCart}
                 />
@@ -141,4 +147,6 @@ class Product extends Component {
     );
   }
 };
+
+
 export default withWidth()(withRouter(Product));

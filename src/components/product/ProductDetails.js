@@ -47,17 +47,22 @@ class ProductDetails extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      quantity: this.props.quantity
+      quantity: this.props.quantity,
+      price: this.props.price
     };
   }
 
   handleChange = name => event => {
     this.setState({ [name]: event.target.value });
     const index = event.target.selectedIndex;
-    const selectedOption = event.target.childNodes[index]
-    const sku_id =  selectedOption.getAttribute('sku_id');
-    const price =  selectedOption.getAttribute('price');
-    if (sku_id) this.props.setSKU({ sku_id, price })
+    const selectedOption = event.target.childNodes[index];
+
+    if (event.target.childNodes.length > 0) {
+      const sku_id =  selectedOption.getAttribute('sku_id');
+      const price =  selectedOption.getAttribute('price');
+      if (sku_id) this.props.setSKU({ sku_id, price })
+    }
+
   }
   render() {
     const { product } = this.props;
@@ -81,7 +86,7 @@ class ProductDetails extends Component {
                       option.label = option.label.charAt(0).toUpperCase() + option.label.slice(1);
                     }
                     return <option key={j} value={option.label}
-                      sku_id={option.sku_id} price={option.price}
+                      sku_id={option.sku_id} price={product.price}
                     >{option.label}</option>
                   })}
                 </Select>

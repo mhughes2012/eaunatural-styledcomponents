@@ -59,8 +59,9 @@ class ProductList extends Component {
     }
   }
   componentDidMount() {
+
     fetch('/product-info/')
-      .then(res => res.json())
+        .then(res => res.json())
       .then(skus => {
         let products = [...this.state.products]
         products.forEach(product => {
